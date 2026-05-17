@@ -1,0 +1,82 @@
+    <head><title>Calculator</title></head>
+    <body>
+       
+        
+<input type="text" name="answer" value="Calculator" style="width:250px; font-size: 30px;text-align:center;font-family:'Times New Roman', Times, serif;
+  color:black;height:50px;display: block; align-items: center;margin: 0 auto;background-color: darkgray;border-radius: 6px"><br><br>
+    <form name="myform" style="background-color:rgb(10, 10, 10);
+    align-items: center;
+    border-radius: 6px;
+     width:250px;height:270px;
+     margin: 0 auto;
+     border:3px solid #555;">
+    
+     <input type="text" name="answer" value="|" style="width:210px; height:50px; margin-left:18px;margin-top:6px;background-color: darkgray;border-radius: 6px"><br><br>
+<input type="button" value="7" style="width:35px;margin-left:8px;" onclick="input('7')">
+<input type="button" value="8" style="width:35px;" onclick="input('8')">
+<input type="button" value="9" style="width:35px" onclick="input('9')">
+<input type="button" value="(" style="width:35px" onclick="input('(')" >
+<input type="button" value=")" style="width:35px" onclick="input(')')">
+<input type="button" value="log" style="width:35px" onclick="input('log(')"><br><br>
+<input type="button" value="sin" style="width:35px;margin-left:8px" onclick="input('sin(')">
+<input type="button" value="4" style="width:35px" onclick="input('4')">
+<input type="button" value="5" style="width:35px" onclick="input('5')">
+<input type="button" value="6" style="width:35px" onclick="input('6')">
+<input type="button" value="&times" style="width:35px" onclick="input('*')">
+<input type="button" value="&divide" style="width:35px" onclick="input('/')"><br><br>
+<input type="button" value="cos" style="width:35px;margin-left:8px" onclick="input('cos(')">
+<input type="button" value="1" style="width:35px" onclick="input('1')">
+<input type="button" value="2" style="width:35px" onclick="input('2')">
+<input type="button" value="3" style="width:35px" onclick="input('3')">
+<input type="button" value="+" style="width:35px" onclick="input('+')">
+<input type="button" value="-" style="width:35px" onclick="input('-')"><br><br>
+<input type="button" value="tan" style="width:35px;margin-left:8px" onclick="input('tan(')">
+<input type="button" value="0" style="width:35px" onclick="input('0')">
+<input type="button" value="." style="width:35px" onclick="input('.')">
+<input type="button" value="del" style="width:35px"onclick="del()">
+<input type="button" value="Ans"style="width:35px" onclick="ans()">
+<input type="button" value="=" style="width:35px" onclick="output()" ><br><br>
+<input type="button" value="AC" style="width:235px;margin-left:6px" onclick="clearAll()">
+
+
+        </form>
+        <script>
+let result = "";
+
+function input(val) {
+  if (myform.answer.value === "|") {
+    myform.answer.value = "";
+  }
+  myform.answer.value += val;
+}
+
+function clearAll() {
+  myform.answer.value = "|";
+}
+
+function del() {
+  myform.answer.value = myform.answer.value.slice(0, -1);
+  if (myform.answer.value === "") {
+    myform.answer.value = "|";
+  }
+}
+
+function output()
+{
+    let expr = myform.answer.value;
+
+    expr = expr.replace(/sin\(/g, "Math.sin(Math.PI/180*");
+    expr = expr.replace(/cos\(/g, "Math.cos(Math.PI/180*");
+    expr = expr.replace(/tan\(/g, "Math.tan(Math.PI/180*");
+    expr = expr.replace(/log\(/g, "Math.log(");
+
+    result = eval(expr);
+    myform.answer.value = result;
+}
+function ans() {
+  myform.answer.value = result;
+}
+</script>
+        </script>
+    </body>
+</html>
